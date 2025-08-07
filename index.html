@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PSWG Character Maker</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Character</h1>
+        <form id="characterForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+                <button type="button" onclick="randomizeName()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required />
+                <button type="button" onclick="randomizeAge()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <button type="button" onclick="randomizeGender()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="species">Species:</label>
+                <select id="species" name="species" required>
+                    <option value="human">Human</option>
+                    <option value="angel">Angel</option>
+                    <option value="demon">Demon</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+                <button type="button" onclick="randomizeSpecies()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="likes">Likes:</label>
+                <textarea id="likes" name="likes" rows="5" required></textarea>
+                <button type="button" onclick="randomizeLikes()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="dislikes">Dislikes:</label>
+                <textarea id="dislikes" name="dislikes" rows="5" required></textarea>
+                <button type="button" onclick="randomizeDislikes()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="personality">Personality:</label>
+                <textarea id="personality" name="personality" rows="6" required></textarea>
+                <button type="button" onclick="generatePersonality()">🎲</button>
+            </div>
+
+            <div class="form-group">
+                <label for="style">Style:</label>
+                <input type="text" id="style" name="style" required />
+                <button type="button" onclick="randomizeStyle()">🎲</button>
+            </div>
+
+            <input type="submit" value="Create Character" />
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

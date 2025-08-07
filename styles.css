@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf6f9;
+    background-image: url('images/panty_and_stocking_background.jpg'); /* Relative path to your image */
+    background-size: auto; /* Use original image size */
+    background-position: center; /* Centers the image */
+    background-repeat: repeat; /* Makes the image repeat/tile */
+    background-attachment: fixed; /* Keeps background fixed when scrolling */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .form-group label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    button {
+        align-self: flex-start;
+        margin-top: 5px;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #e91e63;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Make textareas wider and give them more space */
+textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allow vertical resizing only */
+    font-family: Arial, sans-serif; /* Match the body font */
+    min-width: 0; /* Allows flex to shrink properly */
+}
+
+button {
+    padding: 6px 10px;
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c2185b;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #9c27b0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #7b1fa2;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fce4ec;
+    border-left: 5px solid #e91e63;
+    font-weight: bold;
+}
