@@ -13,16 +13,47 @@ const goodTraits = ["Brave", "Compassionate", "Clever", "Loyal", "Charming", "Ho
                 "Trustworthy", "Understanding", "Witty", "Diligent", "Resourceful", "Sincere", "Supportive", "Tolerant", "Visionary",
                 "Open-minded", "Passionate", "Analytical", "Artistic", "Humble", "Disciplined", "Innovative", "Insightful",
                 "Perceptive", "Proactive", "Resilient", "Self-aware", "Pragmatic", "Forgiving", "Optimistic"];
-    const neutralTraits = ["Curious", "Skeptical", "Cautious", "Practical", "Realistic", "Pensive", "Reserved", "Introverted",  "Extroverted", "Quirky", "Idealistic",
+const neutralTraits = ["Curious", "Skeptical", "Cautious", "Practical", "Realistic", "Pensive", "Reserved", "Introverted",  "Extroverted", "Quirky", "Idealistic",
                 "Ambitious", "Serious", "Silly", "Picky", "Mellow", "Practical", "Decisive", "Nonchalant", "Meticulous", "Outspoken", "Bold",
                 "Emotional", "Calculating", "Shy", "Assertive", "Persistent", "Eccentric", "Skeptical"];
-    const badTraits = ["Arrogant", "Impulsive", "Jealous", "Stubborn", "Cynical", "Deceitful", "Greedy", "Moody", "Reckless", "Vain",
+const badTraits = ["Arrogant", "Impulsive", "Jealous", "Stubborn", "Cynical", "Deceitful", "Greedy", "Moody", "Reckless", "Vain",
                 "Pessimistic", "Aloof", "Aggressive", "Apathetic", "Manipulative", "Lazy", "Critical", "Dimwitted", "Bossy",
                 "Careless", "Cynical", "Defensive", "Childish", "Naive", "Short-tempered", "Jealous", "Controlling", "Obnoxious",
                 "Sloppy", "Inflexible", "Selfish", "Dishonest", "Unreliable", "Disrespectful", "Arrogant", "Overconfident", "Indecisive",
                 "Untrustworthy", "Vindictive", "Hypocritical", "Egotistical", "Conceited", "Gullible", "Overbearing",
                 "Disorganized", "Unmotivated", "Resentful", "Impulsive", "Insecure", "Paranoid", "Overly critical", "Cowardly"];
 
+// Color mapping for hair colors
+const hairColorMap = {
+    "Black": "#000000",
+    "Brown": "#8B4513",
+    "Blonde": "#FFD700", 
+    "Red": "#DC143C",
+    "Gray": "#808080",
+    "White": "#FFFFFF",
+    "Blue": "#0000FF",
+    "Green": "#008000",
+    "Pink": "#FFC0CB",
+    "Purple": "#800080",
+    "Orange": "#FFA500",
+    "Chestnut": "#954535",
+    "Auburn": "#A52A2A",
+    "Silver": "#C0C0C0",
+    "Magenta": "#FF00FF",
+    "Turquoise": "#40E0D0",
+    "Dirty Blonde": "#C7A96B",
+    "Pastel Pink": "#FFB6C1",
+    "Lavender": "#E6E6FA",
+    "Teal": "#008080"
+};
+
+function createColorDisplay(colorName, hexValue = null) {
+    const actualHex = hexValue || hairColorMap[colorName] || "#000000";
+    return `<div class="color-display">
+                <span class="color-swatch" style="background-color: ${actualHex};"></span>
+                <span class="color-text" style="color: ${actualHex};">${colorName}${hexValue ? ` (${hexValue})` : ''}</span>
+            </div>`;
+}
 
 function randomizeGender() {
     const gender = genders[Math.floor(Math.random() * genders.length)];
@@ -66,8 +97,8 @@ function randomizeSpecies() {
 
 function randomizeColors() {
     //This function selects a random color palette for the character. It does this by selecting two random Hex values.
-    const color1 = "#" + Math.floor(Math.random()*16777215).toString(16); //Generate random hex color
-    const color2 = "#" + Math.floor(Math.random()*16777215).toString(16); 
+    const color1 = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0'); //Generate random hex color
+    const color2 = "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0'); 
     document.getElementById("colors").value = color1 + ", " + color2; //Set the colors input to the two random colors
 }
 
@@ -200,6 +231,25 @@ function randomizeStyle() {
     document.getElementById("style").value = style;
 }
 
+function formatColorsForDisplay(colorsString) {
+    const colors = colorsString.split(", ");
+    return colors.map(color => {
+        if (color.startsWith("#")) {
+            return createColorDisplay("Hex Color", color);
+        } else if (hairColorMap[color]) {
+            return createColorDisplay(color);
+        }
+        return color;
+    }).join(" ");
+}
+
+function formatHairColorForDisplay(hairColor) {
+    if (hairColorMap[hairColor]) {
+        return createColorDisplay(hairColor);
+    }
+    return hairColor;
+}
+
 document.getElementById("characterForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -207,6 +257,11 @@ document.getElementById("characterForm").addEventListener("submit", function (e)
     const age = document.getElementById("age").value;
     const gender = document.getElementById("gender").value;
     const species = document.getElementById("species").value;
+    const hair = document.getElementById("hair").value;
+    const hairColor = document.getElementById("hairColor").value;
+    const colors = document.getElementById("colors").value;
+    const weapon = document.getElementById("weapon").value;
+    const alignment = document.getElementById("alignment").value;
     const likes = document.getElementById("likes").value;
     const dislikes = document.getElementById("dislikes").value;
     const personality = document.getElementById("personality").value;
@@ -217,6 +272,11 @@ document.getElementById("characterForm").addEventListener("submit", function (e)
         <p><strong>Age:</strong> ${age}</p>
         <p><strong>Gender:</strong> ${gender}</p>
         <p><strong>Species:</strong> ${species}</p>
+        <p><strong>Hair Style:</strong> ${hair}</p>
+        <p><strong>Hair Color:</strong> ${formatHairColorForDisplay(hairColor)}</p>
+        <p><strong>Colors:</strong> ${formatColorsForDisplay(colors)}</p>
+        <p><strong>Weapon:</strong> ${weapon}</p>
+        <p><strong>Alignment:</strong> ${alignment}</p>
         <p><strong>Likes:</strong> ${likes}</p>
         <p><strong>Dislikes:</strong> ${dislikes}</p>
         <p><strong>Personality:</strong> ${personality}</p>
