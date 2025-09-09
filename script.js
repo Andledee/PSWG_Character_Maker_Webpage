@@ -2,7 +2,7 @@ const neutralNames = ["Shorts", "Tank", "Camisole", "Thong", "Cincher", "Tights"
                 "Leather", "Socks", "Silk", "Belt", "Harness", "Suspenders", "Cuffs", "Ascot", "Cravat", "Binder", "Latex",
                 "Bikini", "Choker", "Pantyhose", "Ribbon", "Velvet", "Satin", "Spandex", "Straps", "Thigh-High", "Anklet", "Bracelet",
                 "Skimpy", "Shades", "Heels", "Boots", "Sandals", "Gloves", "Brooch", "Beret", "Scarf", "Beanie", "Girdle",
-                "Chemise", "Bloomer", "Pantaloons", "Denim", "Scrunchie"];
+                "Chemise", "Bloomer", "Pantaloons", "Denim", "Scrunchie", "Bolero", "Singlet", "Mesh"];
 const femaleNames = [ "Bralette", "Brazier", "Bustier", "Daisy Duke", "Babydoll", "Negligee", "Teddy", "Miniskirt"];
 const maleNames = ["Boxers", "Jockstrap", "Condom", "Codpiece", "Loincloth", "Kilt", "Necktie", "Bowtie", "Trunks", "Namba",
                 "Mankini", "Speedo"];
